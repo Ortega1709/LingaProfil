@@ -1,6 +1,7 @@
 package com.ortega.lingaprofil.data.datasource
 
 import androidx.room.Database
+import androidx.room.RoomDatabase
 
 
 /**
@@ -9,6 +10,6 @@ import androidx.room.Database
  *
  */
 @Database(entities = [ProfileEntity::class], version = 1)
-abstract class ProfileDB {
+abstract class ProfileDB: RoomDatabase() {
     abstract fun profileDAO(): ProfileDAO
 }

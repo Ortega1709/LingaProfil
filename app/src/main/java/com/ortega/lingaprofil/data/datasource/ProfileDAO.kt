@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 /**
  * Profile Data Access Object,
- * Provides all actions we'll do on our Profile Entity like
+ * Define all actions we'll do on our Profile Entity like
  *
  * ( insertProfile, deleteProfile, updateProfile, getAll, getFavoriteProfile )
  */

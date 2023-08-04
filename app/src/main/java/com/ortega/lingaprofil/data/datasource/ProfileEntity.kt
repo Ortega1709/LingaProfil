@@ -1,7 +1,9 @@
 package com.ortega.lingaprofil.data.datasource
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.time.LocalDateTime
 
 /**
  * Profile Entity for Application,
@@ -26,10 +28,13 @@ data class ProfileEntity (
     val name: String,
     val phone: String,
     val profession: String,
+
+    @ColumnInfo(defaultValue = "")
     val email: String? = null,
     val address: String,
+
+    @ColumnInfo(defaultValue = "")
     val image: String? = null,
     val isFavorite: Boolean = false
-
 )
 

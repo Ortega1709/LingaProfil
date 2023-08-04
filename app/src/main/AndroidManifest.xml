@@ -6,8 +6,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:allowBackup="true"
         android:name=".LingaProfilApp"
+        android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +16,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LingaProfil"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.screens.detail.DetailActivity"
+            android:exported="false"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/Theme.LingaProfil" />
+        <activity
+            android:name=".ui.screens.add.AddActivity"
+            android:exported="false"
+            android:label="@string/title_activity_add"
+            android:theme="@style/Theme.LingaProfil" />
+        <activity
+            android:name=".ui.screens.settings.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/Theme.LingaProfil" />
         <activity
             android:name=".ui.screens.home.HomeActivity"
             android:exported="true"

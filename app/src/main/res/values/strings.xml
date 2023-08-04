@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">LingaProfil</string>
+    <string name="search_description">Recherche</string>
+    <string name="settings_description">Paramètres</string>
+    <string name="example_name">Ortega Kabwe</string>
+    <string name="example_profession">Mobile Developer</string>
+    <string name="add">"Ajouter"</string>
+    <string name="image">Image</string>
+    <string name="create_new">Créer un nouveau</string>
+    <string name="save">Enregistrer</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_add">AddActivity</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="edit">Modifier</string>
+    <string name="favorite">Favoriser</string>
+    <string name="delete">Supprimer</string>
 </resources>

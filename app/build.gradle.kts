@@ -66,6 +66,12 @@ dependencies {
     // room
     implementation(libs.room.android)
     implementation(libs.room.ktx)
+    implementation(platform(libs.compose.bom))
+    implementation(platform(libs.compose.bom))
+    implementation(platform(libs.compose.bom))
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(platform(libs.compose.bom))
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.room.compiler)
 
