@@ -17,6 +17,7 @@ class ProfileRepository @Inject constructor(private val profileDAO: ProfileDAO) 
     suspend fun delete(profile: ProfileEntity) = profileDAO.deleteProfile(profile)
     suspend fun update(profile: ProfileEntity) = profileDAO.updateProfile(profile)
     fun getAll() = profileDAO.getAll()
+    fun getProfile(id: Int) = profileDAO.getProfile(id)
     fun getFavoriteProfile(isFavorite: Boolean) = profileDAO.getFavoriteProfile(isFavorite)
 
 }

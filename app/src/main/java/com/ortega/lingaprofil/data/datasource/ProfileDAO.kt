@@ -28,8 +28,12 @@ interface ProfileDAO {
     @Query("SELECT * FROM profile")
     fun getAll(): Flow<List<ProfileEntity>>
 
+    @Query("SELECT * FROM profile WHERE id = :id")
+    fun getProfile(id: Int): Flow<ProfileEntity>
+
     @Query("SELECT * FROM profile WHERE isFavorite = :isFavorite")
     fun getFavoriteProfile(isFavorite: Boolean): Flow<List<ProfileEntity>>
+
 
 
 }

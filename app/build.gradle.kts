@@ -63,6 +63,9 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
 
+    // extended icons
+    implementation(libs.material.icons.extended)
+
     // room
     implementation(libs.room.android)
     implementation(libs.room.ktx)

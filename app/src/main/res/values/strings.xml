@@ -11,7 +11,16 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_add">AddActivity</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="profile">Profil</string>
     <string name="edit">Modifier</string>
-    <string name="favorite">Favoriser</string>
+    <string name="favorite">Favoris</string>
+    <string name="all">Tous</string>
     <string name="delete">Supprimer</string>
+    <string name="name">Nom</string>
+    <string name="phone">Téléphone</string>
+    <string name="profession">Profession</string>
+    <string name="email">E-mail</string>
+    <string name="address">Adresse</string>
+    <string name="photo">Appareil photo</string>
+    <string name="gallerie_photos">Gallerie photos</string>
 </resources>

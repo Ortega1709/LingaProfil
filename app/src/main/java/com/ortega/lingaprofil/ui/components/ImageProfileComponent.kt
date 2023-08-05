@@ -20,7 +20,7 @@ import com.ortega.lingaprofil.R
 import com.ortega.lingaprofil.ui.theme.LingaProfilTheme
 
 @Composable
-fun ImageProfile(image: String, name: String) {
+fun ImageProfileComponent(image: String, name: String) {
 
     if (image == "") {
         Box (
@@ -46,18 +46,3 @@ fun ImageProfile(image: String, name: String) {
 
 }
 
-@Composable
-@Preview
-fun ImageProfilePreview() {
-    LingaProfilTheme {
-        ImageProfile("", "Ortega")
-    }
-}
-
-@Composable
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-fun ImageProfilePreviewDark() {
-    LingaProfilTheme {
-        ImageProfile("", "Ortega")
-    }
-}
