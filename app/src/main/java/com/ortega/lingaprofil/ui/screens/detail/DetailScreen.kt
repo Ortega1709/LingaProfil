@@ -70,7 +70,8 @@ fun DetailScreen(viewModel: DetailViewModel = hiltViewModel()) {
                         )
                     }
                     Spacer(modifier = Modifier.width(width = 4.dp))
-                }
+                },
+                scrollBehavior = null
             )
         }
     ) {

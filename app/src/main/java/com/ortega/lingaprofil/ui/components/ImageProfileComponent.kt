@@ -1,6 +1,7 @@
 package com.ortega.lingaprofil.ui.components
 
 import android.content.res.Configuration
+import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -12,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,11 +38,15 @@ fun ImageProfileComponent(image: String, name: String) {
 
         }
     } else {
+
+        val bitmap = BitmapFactory.decodeFile(image).asImageBitmap()
+
         Image(
             modifier = Modifier
                 .size(size = 50.dp)
                 .clip(shape = RoundedCornerShape(size = 25.dp)),
-            painter = painterResource(id = R.drawable.ic_launcher_background),
+            bitmap = bitmap,
+            contentScale = ContentScale.Crop,
             contentDescription = stringResource(id = R.string.image)
         )
     }

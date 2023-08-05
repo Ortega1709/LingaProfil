@@ -13,19 +13,20 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ortega.lingaprofil.R
+import com.ortega.lingaprofil.data.datasource.ProfileEntity
 import com.ortega.lingaprofil.ui.theme.LingaProfilTheme
 
 @Composable
-fun ProfileItemComponent(onClickItem: ()->Unit) {
+fun ProfileItemComponent(profile: ProfileEntity, onClickItem: ()->Unit) {
 
     ListItem(
         modifier = Modifier.clickable { onClickItem() },
         leadingContent = {
-            ImageProfileComponent(image = "", name = stringResource(id = R.string.example_name))
+            ImageProfileComponent(image = profile.image!!, name = profile.name)
         },
         headlineContent = {
             Text(
-                text = stringResource(id = R.string.example_name),
+                text = profile.name,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1
             )
@@ -33,7 +34,7 @@ fun ProfileItemComponent(onClickItem: ()->Unit) {
 
         overlineContent = {
             Text(
-                text = stringResource(id = R.string.example_profession),
+                text = profile.profession,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1
             )

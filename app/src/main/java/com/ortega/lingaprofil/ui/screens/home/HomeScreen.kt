@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.ArrowBack
@@ -39,6 +40,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ortega.lingaprofil.R
+import com.ortega.lingaprofil.data.datasource.ProfileEntity
 import com.ortega.lingaprofil.ui.components.ChipComponent
 import com.ortega.lingaprofil.ui.components.CountItemComponent
 import com.ortega.lingaprofil.ui.components.PaddingBottomComponent
@@ -108,8 +110,9 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
                             .background(color = MaterialTheme.colorScheme.background)
                     ) {
 
-                        items(count = 20) {
+                        items(uiState.profileList) {
                             ProfileItemComponent(
+                                profile = it,
                                 onClickItem = {
                                     context.startActivity(
                                         Intent(context, DetailActivity::class.java).also {
@@ -158,8 +161,9 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
                 .padding(top = 16.dp, bottom = 16.dp)
         ) {
 
-            items(count = 20) {
+            items(uiState.profileList) {
                 ProfileItemComponent(
+                    profile = it,
                     onClickItem = {
                         context.startActivity(
                             Intent(context, DetailActivity::class.java).also {

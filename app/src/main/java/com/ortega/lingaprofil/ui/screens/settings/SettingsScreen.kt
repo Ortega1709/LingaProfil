@@ -36,6 +36,7 @@ fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
         topBar = {
             TopBarComponent(
                 title = stringResource(id = R.string.settings_description),
+                scrollBehavior = null
             )
         }
     ) {

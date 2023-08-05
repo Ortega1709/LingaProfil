@@ -23,4 +23,6 @@
     <string name="address">Adresse</string>
     <string name="photo">Appareil photo</string>
     <string name="gallerie_photos">Gallerie photos</string>
+    <string name="supprimer">Supprimer</string>
+    <string name="add_picture">Ajouter une image</string>
 </resources>

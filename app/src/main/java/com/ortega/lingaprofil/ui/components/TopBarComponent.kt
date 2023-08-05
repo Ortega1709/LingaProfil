@@ -12,6 +12,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -23,7 +24,8 @@ import com.ortega.lingaprofil.R
 @Composable
 fun TopBarComponent(
     title: String,
-    action:  @Composable() (RowScope.() -> Unit) = {}
+    action:  @Composable() (RowScope.() -> Unit) = {},
+    scrollBehavior: TopAppBarScrollBehavior?
 ) {
 
     val context = LocalContext.current
@@ -39,7 +41,8 @@ fun TopBarComponent(
         title = {
             TextComponent(text = title)
         },
-        actions = action
+        actions = action,
+        scrollBehavior = scrollBehavior
     )
 
 }
