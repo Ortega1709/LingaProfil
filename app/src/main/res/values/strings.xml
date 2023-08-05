@@ -12,6 +12,7 @@
     <string name="title_activity_add">AddActivity</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="profile">Profil</string>
+    <string name="profiles">Profil(s)</string>
     <string name="edit">Modifier</string>
     <string name="favorite">Favoris</string>
     <string name="all">Tous</string>

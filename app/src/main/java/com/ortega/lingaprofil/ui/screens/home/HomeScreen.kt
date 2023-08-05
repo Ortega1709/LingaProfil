@@ -140,7 +140,7 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
                         ChipComponent(text = stringResource(id = R.string.favorite), onClickChip = {}, active = false)
                     }
 
-                    CountItemComponent(profileList = emptyList())
+                    CountItemComponent(profileList = uiState.profileList)
 
                 }
             }

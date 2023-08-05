@@ -102,6 +102,11 @@ fun AddScreen(viewModel: AddViewModel = hiltViewModel()) {
             imageUri = uri
             showModalBottomSheet = false
         }
+    
+    val launcherCamera = 
+        rememberLauncherForActivityResult(contract = ActivityResultContracts.TakePicturePreview()) {
+            bitmap ->
+        }
 
     Scaffold (
         topBar = {

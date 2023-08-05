@@ -15,7 +15,7 @@ fun CountItemComponent(profileList: List<ProfileEntity>) {
 
     Column {
         Text(
-            text = "${profileList.size} ${stringResource(id = R.string.profile)}",
+            text = "${profileList.size} ${stringResource(id = R.string.profiles)}",
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.primary)
