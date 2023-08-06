@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ortega.lingaprofil.data.datasource.ProfileEntity
 import com.ortega.lingaprofil.data.repository.ProfileRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -25,6 +26,15 @@ class DetailViewModel @Inject constructor(
                 uiState = uiState.copy(currentProfile = profile)
             }
         }
+    }
+
+    fun favoriteUpdate(isFavorite: Boolean, id: Int) {
+
+        viewModelScope.launch {
+            profileRepository.favoriteProfile(isFavorite, id)
+        }
+
+        getProfile(id = id)
 
     }
 

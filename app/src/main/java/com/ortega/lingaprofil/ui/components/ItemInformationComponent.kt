@@ -20,7 +20,7 @@ fun ItemInformationComponent(
 
     ListItem(
         modifier = Modifier.clickable { onClickItem() },
-        leadingContent = { IconComponent(icon = icon!!) },
+        leadingContent = { if (icon == null) {} else IconComponent(icon = icon) },
         colors = ListItemDefaults.colors(
             containerColor = Color.Transparent
         ),

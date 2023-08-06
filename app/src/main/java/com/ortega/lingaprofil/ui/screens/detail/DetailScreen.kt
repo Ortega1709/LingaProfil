@@ -18,6 +18,7 @@ import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.DeleteOutline
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.ModeEditOutline
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarBorder
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -30,8 +31,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
@@ -40,6 +45,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ortega.lingaprofil.R
+import com.ortega.lingaprofil.ui.components.BottomSheetComponent
+import com.ortega.lingaprofil.ui.components.ConfirmComponent
 import com.ortega.lingaprofil.ui.components.DetailImageProfileComponent
 import com.ortega.lingaprofil.ui.components.DetailInformationComponent
 import com.ortega.lingaprofil.ui.components.TextComponent
@@ -50,10 +57,14 @@ import kotlinx.coroutines.CoroutineScope
 @Composable
 fun DetailScreen(viewModel: DetailViewModel = hiltViewModel(), id: Int) {
 
-    val uiState = viewModel.uiState
+    var uiState = viewModel.uiState
     val context = LocalContext.current
 
-    viewModel.getProfile(id = id)
+    if (id > 0) {
+        viewModel.getProfile(id = id)
+    } else {
+        (context as? Activity)?.finish()
+    }
 
     val scrollBehavior = TopAppBarDefaults
         .exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
@@ -69,17 +80,20 @@ fun DetailScreen(viewModel: DetailViewModel = hiltViewModel(), id: Int) {
                             contentDescription = stringResource(id = R.string.edit)
                         )
                     }
-                    IconButton(onClick = {  }) {
-                        Icon(
-                            imageVector = Icons.Rounded.StarBorder,
-                            contentDescription = stringResource(id = R.string.favorite)
-                        )
-                    }
-                    IconButton(onClick = {  }) {
-                        Icon(
-                            imageVector = Icons.Rounded.Delete,
-                            contentDescription = stringResource(id = R.string.delete)
-                        )
+                    IconButton(onClick = {
+                        viewModel.favoriteUpdate(!uiState.currentProfile.isFavorite, id)
+                    }) {
+                        if (uiState.currentProfile.isFavorite) {
+                            Icon(
+                                imageVector = Icons.Rounded.Star,
+                                contentDescription = stringResource(id = R.string.favorite)
+                            )
+                        } else {
+                            Icon(
+                                imageVector = Icons.Rounded.StarBorder,
+                                contentDescription = stringResource(id = R.string.favorite)
+                            )
+                        }
                     }
                     Spacer(modifier = Modifier.width(width = 4.dp))
                 },
@@ -104,5 +118,7 @@ fun DetailScreen(viewModel: DetailViewModel = hiltViewModel(), id: Int) {
         }
 
     }
+
+
 
 }

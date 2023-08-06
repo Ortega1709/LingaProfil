@@ -4,7 +4,7 @@ import com.ortega.lingaprofil.data.datasource.ProfileEntity
 
 data class DetailUIState(
     val currentProfile: ProfileEntity = ProfileEntity(
-        null,
+        0,
         "",
         "",
         "",

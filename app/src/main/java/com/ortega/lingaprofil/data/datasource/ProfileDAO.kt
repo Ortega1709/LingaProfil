@@ -25,6 +25,9 @@ interface ProfileDAO {
     @Update
     suspend fun updateProfile(profile: ProfileEntity)
 
+    @Query("UPDATE profile SET isFavorite = :isFavorite WHERE id = :id")
+    suspend fun favoriteProfile(isFavorite: Boolean, id: Int)
+
     @Query("SELECT * FROM profile")
     fun getAll(): Flow<List<ProfileEntity>>
 

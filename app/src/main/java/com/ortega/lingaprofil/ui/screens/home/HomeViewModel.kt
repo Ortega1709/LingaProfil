@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ortega.lingaprofil.data.datasource.ProfileEntity
 import com.ortega.lingaprofil.data.repository.ProfileRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -26,6 +27,16 @@ class HomeViewModel @Inject constructor(private val profileRepository: ProfileRe
                 )
             }
         }
+    }
+
+    fun deleteProfile(profile: ProfileEntity) {
+
+        viewModelScope.launch {
+            profileRepository.delete(profile = profile)
+        }
+
+        getProfiles()
+
     }
 
 }

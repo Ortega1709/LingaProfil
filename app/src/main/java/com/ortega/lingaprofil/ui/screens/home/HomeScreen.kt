@@ -42,6 +42,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ortega.lingaprofil.R
 import com.ortega.lingaprofil.data.datasource.ProfileEntity
 import com.ortega.lingaprofil.ui.components.ChipComponent
+import com.ortega.lingaprofil.ui.components.ConfirmComponent
 import com.ortega.lingaprofil.ui.components.CountItemComponent
 import com.ortega.lingaprofil.ui.components.PaddingBottomComponent
 import com.ortega.lingaprofil.ui.components.ProfileItemComponent
@@ -59,6 +60,8 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
 
     var query by rememberSaveable { mutableStateOf("") }
     var active by rememberSaveable { mutableStateOf(false) }
+    var showModalBottomSheet by rememberSaveable { mutableStateOf(false) }
+
 
     Scaffold(
         topBar = {
@@ -118,7 +121,8 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
                                     intent.putExtra("id", it.id)
 
                                     context.startActivity(intent)
-                                }
+                                },
+                                onClickDelete = {}
                             )
                         }
                     }
@@ -168,6 +172,10 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
                         intent.putExtra("id", it.id)
 
                         context.startActivity(intent)
+                    },
+                    onClickDelete = {
+                        showModalBottomSheet = true
+                        uiState.currentProfile = it
                     }
                 )
             }
@@ -178,6 +186,16 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
             }
 
         }
+    }
+
+    if (showModalBottomSheet) {
+        ConfirmComponent(
+            onDismiss = { showModalBottomSheet = false },
+            onClickDelete = {
+                viewModel.deleteProfile(uiState.currentProfile!!)
+                showModalBottomSheet = false
+            }
+        )
     }
 }
 
