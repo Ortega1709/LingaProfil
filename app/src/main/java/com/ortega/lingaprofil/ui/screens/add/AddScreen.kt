@@ -27,6 +27,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Person
@@ -68,6 +69,7 @@ import com.ortega.lingaprofil.R
 import com.ortega.lingaprofil.data.datasource.ProfileEntity
 import com.ortega.lingaprofil.ui.components.BottomSheetComponent
 import com.ortega.lingaprofil.ui.components.ImageFieldComponent
+import com.ortega.lingaprofil.ui.components.SnackBarComponent
 import com.ortega.lingaprofil.ui.components.TextComponent
 import com.ortega.lingaprofil.ui.components.TextFieldComponent
 import com.ortega.lingaprofil.ui.components.TopBarComponent
@@ -82,9 +84,8 @@ fun AddScreen(viewModel: AddViewModel = hiltViewModel()) {
     val scrollBehavior = TopAppBarDefaults
         .exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
-    var showModalBottomSheet by rememberSaveable {
-        mutableStateOf(false)
-    }
+    var showModalBottomSheet by rememberSaveable { mutableStateOf(false) }
+    var showSnackBar by rememberSaveable { mutableStateOf(false) }
 
     var nameTextField by rememberSaveable { mutableStateOf("") }
     var phoneTextField by rememberSaveable { mutableStateOf("") }
@@ -97,59 +98,59 @@ fun AddScreen(viewModel: AddViewModel = hiltViewModel()) {
     // get uri of image uploaded
     var imageUri by remember { mutableStateOf<Uri?>(null) }
 
-    val launcher =
-        rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri: Uri? ->
+    // gallery launcher
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()) { uri: Uri? ->
             imageUri = uri
             showModalBottomSheet = false
-        }
-    
-    val launcherCamera = 
-        rememberLauncherForActivityResult(contract = ActivityResultContracts.TakePicturePreview()) {
-            bitmap ->
         }
 
     Scaffold (
         topBar = {
             TopBarComponent(
+                icon = Icons.Rounded.Close,
                 title = stringResource(id = R.string.create_new),
                 action = {
                     Button(
                         onClick = {
-                            if (imageUri != null) {
+                            if (nameTextField != "") {
+                                if (imageUri != null) {
 
-                                // save image and get his path
-                                imageTextField = viewModel.saveImageToInternalStorage(context, imageUri!!)
+                                    // save image and get his path
+                                    imageTextField = viewModel.saveImageToInternalStorage(context, imageUri!!)
 
-                                val profile = ProfileEntity(
-                                    null,
-                                    nameTextField,
-                                    phoneTextField,
-                                    professionTextField,
-                                    emailTextField,
-                                    addressTextField,
-                                    imageTextField,
-                                    false
-                                )
+                                    val profile = ProfileEntity(
+                                        null,
+                                        name = nameTextField,
+                                        phone = phoneTextField,
+                                        profession = professionTextField,
+                                        email = emailTextField,
+                                        address = addressTextField,
+                                        image = imageTextField,
+                                        false
+                                    )
 
-                                viewModel.saveProfile(profile)
-                                (context as? Activity)?.finish()
+                                    // save profile and finish current activity
+                                    viewModel.saveProfile(profile)
+                                    (context as? Activity)?.finish()
 
-                            } else {
-                                val profile = ProfileEntity(
-                                    null,
-                                    nameTextField,
-                                    phoneTextField,
-                                    professionTextField,
-                                    emailTextField,
-                                    addressTextField,
-                                    imageTextField,
-                                    false
-                                )
+                                } else {
+                                    val profile = ProfileEntity(
+                                        null,
+                                        name = nameTextField,
+                                        phone = phoneTextField,
+                                        profession = professionTextField,
+                                        email = emailTextField,
+                                        address = addressTextField,
+                                        image = imageTextField,
+                                        false
+                                    )
 
-                                viewModel.saveProfile(profile)
-                                (context as? Activity)?.finish()
+                                    viewModel.saveProfile(profile)
+                                    (context as? Activity)?.finish()
 
-                            }
+                                }
+                            } else { showSnackBar = true }
                         }
                     ) {
                         Text(text = stringResource(id = R.string.save))
@@ -159,7 +160,15 @@ fun AddScreen(viewModel: AddViewModel = hiltViewModel()) {
                 scrollBehavior = scrollBehavior
             )
         },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        snackbarHost = {
+            if (showSnackBar) {
+                SnackBarComponent(
+                    message = stringResource(R.string.require_name),
+                    onActionClick = { showSnackBar = false }
+                )
+            }
+        }
     ) {
 
         LazyColumn (
@@ -235,6 +244,4 @@ fun AddScreen(viewModel: AddViewModel = hiltViewModel()) {
         )
     }
 }
-
-
 

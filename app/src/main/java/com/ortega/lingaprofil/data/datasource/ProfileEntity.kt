@@ -12,10 +12,10 @@ import java.time.LocalDateTime
  *
  * @property id unique for profile
  * @property name name of user
- * @property phone phone of user
- * @property profession profession of user
+ * @property phone optional phone of user
+ * @property profession optional profession of user
  * @property email optional email of user
- * @property address physic address of user
+ * @property address optional physic address of user
  * @property image optional image of user
  * @property isFavorite favorite profile or not
  */
@@ -26,11 +26,17 @@ data class ProfileEntity (
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
     val name: String,
+
+    @ColumnInfo(defaultValue = "")
     val phone: String,
+
+    @ColumnInfo(defaultValue = "")
     val profession: String,
 
     @ColumnInfo(defaultValue = "")
     val email: String? = null,
+
+    @ColumnInfo(defaultValue = "")
     val address: String,
 
     @ColumnInfo(defaultValue = "")

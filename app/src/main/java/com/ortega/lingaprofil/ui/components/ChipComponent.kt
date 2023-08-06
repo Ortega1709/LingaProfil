@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.ortega.lingaprofil.ui.theme.LingaProfilTheme
 
 @Composable
-fun ChipComponent(text: String, onClickChip: ()->Unit, active: Boolean) {
+fun ChipComponent(text: String, onClickChip: () -> Unit, active: Boolean) {
 
     AssistChip(
         onClick = { onClickChip() },

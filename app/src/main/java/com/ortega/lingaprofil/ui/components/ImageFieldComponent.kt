@@ -45,9 +45,9 @@ import com.ortega.lingaprofil.R
 @Composable
 fun ImageFieldComponent(
     imageUri: Uri? = null,
-    onClickImageField: ()->Unit,
-    onClickDelete: ()->Unit,
-    onClickAddPicture: ()->Unit
+    onClickImageField: () -> Unit,
+    onClickDelete: () -> Unit,
+    onClickAddPicture: () -> Unit
 ) {
 
     val context = LocalContext.current

@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -24,6 +25,7 @@ import com.ortega.lingaprofil.R
 @Composable
 fun TopBarComponent(
     title: String,
+    icon: ImageVector = Icons.Rounded.ArrowBack,
     action:  @Composable() (RowScope.() -> Unit) = {},
     scrollBehavior: TopAppBarScrollBehavior?
 ) {
@@ -35,7 +37,7 @@ fun TopBarComponent(
             IconButton(onClick = {
                 (context as? Activity)?.finish()
             }) {
-                Icon(imageVector = Icons.Rounded.ArrowBack, contentDescription = null)
+                Icon(imageVector = icon, contentDescription = null)
             }
         },
         title = {

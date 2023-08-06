@@ -26,4 +26,5 @@
     <string name="gallerie_photos">Gallerie photos</string>
     <string name="supprimer">Supprimer</string>
     <string name="add_picture">Ajouter une image</string>
+    <string name="require_name">Veuillez insérer un nom</string>
 </resources>

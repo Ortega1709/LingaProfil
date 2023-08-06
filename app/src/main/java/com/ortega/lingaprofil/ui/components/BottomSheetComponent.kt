@@ -22,9 +22,9 @@ import com.ortega.lingaprofil.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomSheetComponent(
-    onDismiss: ()->Unit,
-    onClickCamera: ()->Unit,
-    onClickGallery: ()->Unit
+    onDismiss: () -> Unit,
+    onClickCamera: () -> Unit,
+    onClickGallery: () -> Unit
 ) {
     ModalBottomSheet(onDismissRequest = onDismiss) {
         Column (

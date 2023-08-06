@@ -17,7 +17,7 @@ import com.ortega.lingaprofil.data.datasource.ProfileEntity
 import com.ortega.lingaprofil.ui.theme.LingaProfilTheme
 
 @Composable
-fun ProfileItemComponent(profile: ProfileEntity, onClickItem: ()->Unit) {
+fun ProfileItemComponent(profile: ProfileEntity, onClickItem: () -> Unit) {
 
     ListItem(
         modifier = Modifier.clickable { onClickItem() },
