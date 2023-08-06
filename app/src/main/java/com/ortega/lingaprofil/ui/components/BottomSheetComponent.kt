@@ -36,6 +36,7 @@ fun BottomSheetComponent(
                 leadingContent = { IconComponent(icon = Icons.Rounded.CameraAlt) },
                 headlineContent = { TextComponent(text = stringResource(R.string.photo)) },
             )
+
             ListItem(
                 modifier = Modifier.clickable { onClickGallery() },
                 leadingContent = { IconComponent(icon = Icons.Rounded.Photo) },
