@@ -114,11 +114,10 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
                             ProfileItemComponent(
                                 profile = it,
                                 onClickItem = {
-                                    context.startActivity(
-                                        Intent(context, DetailActivity::class.java).also {
-                                            it.putExtra("id", 1)
-                                        }
-                                    )
+                                    val intent = Intent(context, DetailActivity::class.java)
+                                    intent.putExtra("id", it.id)
+
+                                    context.startActivity(intent)
                                 }
                             )
                         }
@@ -154,10 +153,10 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
                 }
             )
         }
-    ) {
+    ) { paddingValues ->
         LazyColumn(
             modifier = Modifier
-                .padding(it)
+                .padding(paddingValues = paddingValues)
                 .padding(top = 16.dp, bottom = 16.dp)
         ) {
 
@@ -165,11 +164,10 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
                 ProfileItemComponent(
                     profile = it,
                     onClickItem = {
-                        context.startActivity(
-                            Intent(context, DetailActivity::class.java).also {
-                                it.putExtra("id", 1)
-                            }
-                        )
+                        val intent = Intent(context, DetailActivity::class.java)
+                        intent.putExtra("id", it.id)
+
+                        context.startActivity(intent)
                     }
                 )
             }

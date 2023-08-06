@@ -27,4 +27,6 @@
     <string name="supprimer">Supprimer</string>
     <string name="add_picture">Ajouter une image</string>
     <string name="require_name">Veuillez insérer un nom</string>
+    <string name="no_informations">Pas d\'informations</string>
+    <string name="informations">Informations</string>
 </resources>

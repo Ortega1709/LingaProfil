@@ -34,13 +34,13 @@ data class ProfileEntity (
     val profession: String,
 
     @ColumnInfo(defaultValue = "")
-    val email: String? = null,
+    val email: String = "",
 
     @ColumnInfo(defaultValue = "")
     val address: String,
 
     @ColumnInfo(defaultValue = "")
-    val image: String? = null,
+    val image: String = "",
     val isFavorite: Boolean = false
 )
 

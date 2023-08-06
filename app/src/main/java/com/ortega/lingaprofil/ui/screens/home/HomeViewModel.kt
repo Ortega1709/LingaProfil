@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val profileRepository: ProfileRepository): ViewModel() {
 
-    var uiState by mutableStateOf(UIState())
+    var uiState by mutableStateOf(HomeUIState())
 
     init { getProfiles() }
 

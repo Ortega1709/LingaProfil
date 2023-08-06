@@ -17,9 +17,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val id = intent.getIntExtra("id", 0)
+
         setContent {
             LingaProfilTheme {
-                DetailScreen()
+                DetailScreen(id = id)
             }
         }
     }

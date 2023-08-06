@@ -22,7 +22,7 @@ fun ProfileItemComponent(profile: ProfileEntity, onClickItem: () -> Unit) {
     ListItem(
         modifier = Modifier.clickable { onClickItem() },
         leadingContent = {
-            ImageProfileComponent(image = profile.image!!, name = profile.name)
+            ImageProfileComponent(image = profile.image, name = profile.name)
         },
         headlineContent = {
             Text(
